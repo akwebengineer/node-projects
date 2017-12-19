@@ -13,7 +13,9 @@ const command = process.argv[2];
 const args = yargs.argv;
 
 if (command === 'add'){    
-    notes.addNote(args.title, args.body);
+   let note = notes.addNote(args.title, args.body);
+   if (note) console.log(`Note with title "${note.title}" was added`);
+   else {console.log(`Note with title "${args.title}" already exists`)};
 }
 else if (command === 'list'){
     notes.getAll();

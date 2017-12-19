@@ -1,5 +1,5 @@
 
-console.log('starting notes.js');
+console.log('starting notes.js..');
 
 
 const fs = require('fs');
