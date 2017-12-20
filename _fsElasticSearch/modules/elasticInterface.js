@@ -46,7 +46,8 @@ const addDocumentsToIndex = (document, index, type) => {
 
 }
 
-const searchFiles = (query) =>{
+const searchFiles = (searchString, dir) =>{
+    console.log(searchString);
     const searchPromise = new Promise((resolve, reject) => {
         client.search({
             index: 'filesystem',
@@ -54,7 +55,7 @@ const searchFiles = (query) =>{
             body:{
                 query:{
                     match: {
-                        'file': query
+                        'file': searchString
                     }
                 }
             }

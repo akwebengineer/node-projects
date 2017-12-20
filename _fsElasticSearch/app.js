@@ -1,7 +1,7 @@
 
 const recursive = require('recursive-readdir');
 
-const elastic = require('./elastic/main.js');
+
 const routes = require('./routes/routes.js');
 
 
@@ -10,17 +10,17 @@ const dirName = process.argv[2];
 
 
 
-function findFilesAndIndex(directory) {
-    recursive(directory, function (err, files) {
-        // `files` is an array of absolute file paths 
-        console.log(files.length);
-            elastic.addDocumentsToIndex({file: files}, 'filesystem', 'indexedFiles');
+// function findFilesAndIndex(directory) {
+//     recursive(directory, function (err, files) {
+//         // `files` is an array of absolute file paths 
+//         console.log(files.length);
+//             elastic.addDocumentsToIndex({file: files}, 'filesystem', 'indexedFiles');
         
-        // files.map((file)=>{
-        //     elastic.addDocumentsToIndex({file}, 'filesystem', 'indexedFiles');
-        // });
-      });
-}
+//         // files.map((file)=>{
+//         //     elastic.addDocumentsToIndex({file}, 'filesystem', 'indexedFiles');
+//         // });
+//       });
+// }
 
 // findFilesAndIndex(dirName);
 
