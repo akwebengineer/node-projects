@@ -15,8 +15,8 @@ const dirName = process.argv[2];
 
 
 const init = () => {
-    app.listen(3000, () => {
-        console.log("App started on port 3000");
+    app.listen(3001, () => {
+        console.log("App started on port 3001");
     });
 }
 
