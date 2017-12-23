@@ -29,8 +29,9 @@ const routes = function(app) {
     //directory content route
     app.get('/readDir', (req,res) => {
         const dirName = req.query.dirName;
+        const currDir = req.query.currDir;
     
-        fsInterface.listDir(dirName)
+        fsInterface.listDir(path.join(currDir, dirName))
         .then((files) => {
             res.send(files);
         })
@@ -39,6 +40,20 @@ const routes = function(app) {
         });
     });
     
+    //directory metadata route
+    app.get('/getStats', (req,res) => {
+        const dirName = req.query.dirName;
+        const currDir = req.query.currDir;
+    
+        fsInterface.getFileStatsAsync(path.join(currDir, dirName))
+        .then((files) => {
+            res.send(files);
+        })
+        .catch((err) => {
+            res.send(err);
+        });
+    });
+
     //nested directory content route
     app.get('/readDirNested', (req,res) => {
     

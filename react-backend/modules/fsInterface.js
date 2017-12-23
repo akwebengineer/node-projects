@@ -19,7 +19,19 @@ const listDir = (dir) => {
                 //     filesWithMeta.push(_getFileStats(file));
                 // });
                 // resolve(filesWithMeta);
-                resolve(files);
+
+                const filesArr = [];
+                files.map((file) => {
+                    const _meta = _getFileStats(path.join(dir,file));
+                    filesArr.push({
+                        name: file,
+                        currDir: dir,
+                        type: _meta.type,
+                        meta: _meta.meta
+                    });
+                });
+
+                resolve({ files: filesArr, currDir: dir });
             }
         });
     });
@@ -51,7 +63,7 @@ const findInNestedDir = (searchString, dir) => {
         let files = elasticInterface.searchFiles(searchString, dir);
 
         files.then((data) => {
-            resolve(data);            
+            resolve(data);
         }).catch((err) => {
             reject(err);
         });
@@ -71,6 +83,8 @@ const deleteDir = () => { }
 
 const _getFileStats = (file) => {
     const _meta = fs.statSync(file);
+    const _crDt = new Date(_meta.birthtimeMs);
+    const _modDt = new Date(_meta.mtimeMs);        
     let _type = null;
     if (_meta.isFile()) {
         _type = "file";
@@ -78,18 +92,58 @@ const _getFileStats = (file) => {
     else if (_meta.isDirectory()) {
         _type = "directory";
     }
-    return {
-        name: file,
+    return {        
         type: _type,
-        meta: _meta
+        meta: {
+            createDate: `Was created on ${_crDt.getMonth()}/${_crDt.getDate()}/${_crDt.getFullYear()} ${_crDt.getHours()}:${_crDt.getMinutes()}:${_crDt.getSeconds()}`,
+            modifiedDate: `Was modified on ${_modDt.getMonth()}/${_modDt.getDate()}/${_modDt.getFullYear()} ${_modDt.getHours()}:${_modDt.getMinutes()}:${_modDt.getSeconds()}`,
+            size: `The size is ${_meta.size} bytes`
+        }
     };
 
     // return file;    
 }
 
+const getFileStatsAsync = (dir) => {
+    // const slashIndex = file.lastIndexOf('/');
+    // const fileName = file.substr((slashIndex >= 0) ? slashIndex+1 : 0);
+
+    listDir().then((data) => {
+
+    }).catch();
+    const fileStatPromise = new Promise((resolve, reject) => {
+        fs.stat(file, (err, stats) => {
+            if (err) {
+                reject(err);
+            }
+            else {
+                const _meta = stats;
+                let _type = null;
+                if (_meta.isFile()) {
+                    _type = "file";
+                }
+                else if (_meta.isDirectory()) {
+                    _type = "directory";
+                }
+                resolve(
+                    {
+                        name: file,
+                        currDir: dir,
+                        type: _type,
+                        meta: _meta
+                    }
+                );
+            }
+        });
+
+    });
+    return fileStatPromise;
+}
+
 module.exports = {
     listDir,
     listNestedDir,
-    findInNestedDir
+    findInNestedDir,
+    getFileStatsAsync
 }
 

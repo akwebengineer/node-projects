@@ -4,4 +4,26 @@
     border: 1px solid #ebebeb;
     box-shadow: 2px 2px 5px 0px #ebebeb;
     margin: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+
+.info-card-title-icon, .info-card-title-text {
+    padding: 0px 5px;
+}
+
+.info-card-title {
+    height: 40%;
+    font-size: 20px;
+    padding: 10px;
+    font-weight: 300;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.info-card-additional {
+    height: 60%;
+    /* height: 60px; */
+    box-sizing: border-box;    
 }

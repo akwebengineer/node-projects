@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './resources/css/app.css';
-import AppShell from './components/appShell';
+import Main from './modules/main.js';
+
 
 ReactDOM.render(
-    <AppShell />, document.getElementById('react-root')
+    <Main />, document.getElementById('react-root')
 );

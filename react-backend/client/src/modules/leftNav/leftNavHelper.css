@@ -1,0 +1,11 @@
+.left-nav-container{
+    padding: 20px;
+}
+.nav-action-item {
+    padding: 10px 2px;
+    cursor: pointer;
+}
+
+.nav-action-elem {
+    margin: 0px 5px;
+}
