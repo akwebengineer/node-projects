@@ -24,13 +24,13 @@ body {
     left: 0;
     top: 50px;
     right: 0;
-    height: 65%;
+    height: calc(100% - 400px);
     /* border-bottom: 1px solid #ebebeb; */
     display: flex;
 }
 
 .main-content-left {
-    width: 35%;
+    width: 350px;
     /* border: 1px solid #e74c3c; */
     /* transition: width 0.5s linear; */
     display: flex;
@@ -38,7 +38,7 @@ body {
 }
 
 .main-content-right {
-    width: 65%;
+    width: calc(100% - 350px);
     overflow-y: auto;    
 }
 
@@ -47,7 +47,9 @@ body {
 }
 
 .main-content .info-card {
-    transition: all 1s linear; 
+    transition: all 1s linear;
+    position: relative;
+    float: left;
 }
 
 .main-content .info-card.shrink {
@@ -87,7 +89,7 @@ body {
     left: 0;
     bottom: 0;
     right: 0;
-    height: 30%;
+    height: 350px;
     box-shadow: 0px 1px 8px 2px #d3d3d3;
 }
 
@@ -107,6 +109,54 @@ body {
 .search-folder .search-folder-advanced {
     font-size: 10px;
     font-weight: 400;
-    cursor: pointer;
+    margin-left: 10px;
+    cursor: pointer;   
+}
+
+.search-folder .advanced-chevron {
+    font-size: 10px;
+    font-weight: 200;
+    margin-left: 5px;
+    cursor: pointer;   
     
+}
+/* .search-folder:hover ul{
+    display: block;
+}
+
+.search-folder:hover .advanced-search,  .advanced-search:hover {
+    height: auto;
+} */
+
+
+/* .advanced-search {
+    height: 0px;
+    transition: height 0.5s linear;    
+}
+*/
+.advanced-search ul {
+    padding: 0px;
+} 
+
+.advanced-search li {
+    cursor: pointer;    
+}
+
+.search-selection {
+    display: block;
+    margin: 5px;
+}
+
+.sort-row {
+    margin: 25px 25px 15px 15px;
+}
+
+.sortable {
+    margin-left: 25px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.sortable:hover {
+    border-bottom: 1px solid #e74c3c;
 }

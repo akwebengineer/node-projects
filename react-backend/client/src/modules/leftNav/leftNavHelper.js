@@ -5,7 +5,7 @@ class LeftNav extends Component {
     constructor() {
         super();
         this.state = {
-            leftNavContents: [                
+            leftNavContents: [
                 {
                     action: 'createFile',
                     title: 'New File',
@@ -58,9 +58,39 @@ class LeftNav extends Component {
                     <i className="fa fa-search" aria-hidden="true"></i>
                     <input type="text" className="search-folder-input" placeholder="Find in folder"></input>
                     <span className="search-folder-advanced">Advanced</span>
+                    <i className="fa fa-chevron-down advanced-chevron" aria-hidden="true"></i>
+                </div>
+                <div className="advanced-search">
+                    <ul>
+                        <li className="search-selection">
+                            <span>
+                                <i className="fa fa-check-square-o" aria-hidden="true"></i>
+                            </span>
+                            <span style={{"margin-left": "10px"}}>
+                                Find file names in current directory
+                            </span>
+                        </li>
+                        <li className="search-selection">
+                            <span>
+                                <i className="fa fa-square-o" aria-hidden="true"></i>
+                            </span>
+                            <span style={{"margin-left": "10px"}}>
+                                Find file names in nested directories
+                            </span>
+                        </li>
+                        <li className="search-selection">
+                            <span>
+                                <i className="fa fa-square-o" aria-hidden="true"></i>
+                            </span>
+                            <span style={{"margin-left": "10px"}}>
+                                Find file contents in current directory
+                            </span>
+                        </li>
+
+                    </ul>
                 </div>
                 <div>
-                    {this.addNavElements()}                    
+                    {this.addNavElements()}
                 </div>
             </div>
         );
