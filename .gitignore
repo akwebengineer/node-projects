@@ -1,0 +1,4 @@
+notes/node_modules/*
+_fsElasticSearch/node_modules/*
+react-backend/node_modules/*
+fsElSearch/*
